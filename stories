@@ -1,0 +1,69 @@
+# CLOUD-XXXX
+## Create foundational Azure SSH Public Key module with base resource
+
+**Story Points:** 1
+**Type:** Story
+
+---
+
+### Description
+
+Create the base Azure SSH Public Key Terraform module as part of the AWS-to-Azure migration effort. This module is the Azure equivalent of the existing `terraform-aws-instance_key_pair` module.
+
+In AWS, the module creates an EC2 key pair with a TLS-generated private key. The Azure equivalent will create an `azurerm_ssh_public_key` resource with the same TLS key generation approach.
+
+This story covers base resource creation only. Additional features and testing will follow in subsequent stories.
+
+**AWS Reference Module:** `terraform-aws-instance_key_pair`
+
+---
+
+### Acceptance Criteria
+
+- [ ] Module creates TLS private key (RSA, matching AWS default)
+- [ ] Module creates `azurerm_ssh_public_key` resource
+- [ ] Private key output marked as sensitive
+- [ ] Tag processing logic follows approved module patterns (NSG, Storage Account)
+- [ ] Variables include namespace, environment, location, resource_group_name
+- [ ] Location validation restricts to approved Azure regions
+- [ ] Example configuration provided in `examples/default/`
+- [ ] README with module description and sensitive output instructions
+- [ ] `terraform validate` passes
+- [ ] Module file structure matches existing Azure module conventions
+
+---
+
+### Definition of Done
+
+- [ ] Module files created: main.tf, variables.tf, outputs.tf, tags.tf, versions.tf
+- [ ] Example usage provided
+- [ ] README created
+- [ ] Code reviewed and approved
+- [ ] Merged to main branch
+
+---
+
+### Out of Scope (Future Stories)
+
+- Key rotation or expiry logic
+- Integration with Azure Key Vault
+- Conditional key algorithm selection (e.g., ECDSA)
+- Sandbox testing and publishing
+
+---
+
+### Dependencies
+
+- Access to Azure module repository
+- Approved tag structure from existing modules
+
+---
+
+### AWS to Azure Mapping
+
+| AWS | Azure |
+|-----|-------|
+| `tls_private_key` | `tls_private_key` (same) |
+| `aws_key_pair` | `azurerm_ssh_public_key` |
+| Key pair attached to EC2 | SSH key referenced by VM |
+| VPC-scoped | Resource Group + Location scoped |
