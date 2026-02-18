@@ -67,3 +67,23 @@ This story covers base resource creation only. Additional features and testing w
 | `aws_key_pair` | `azurerm_ssh_public_key` |
 | Key pair attached to EC2 | SSH key referenced by VM |
 | VPC-scoped | Resource Group + Location scoped |
+
+
+
+Status: Done ✅
+
+Summary:
+Added lifecycle management policies with AWS storage class mapping to Azure tiers.
+
+Changes:
+- Added azurerm_storage_management_policy resource
+- Added variables: enable_lifecycle, lifecycle_days, storage_class, lifecycle_prefix, expiration_days
+- Added storage class mapping (AWS → Azure): INTELLIGENT_TIERING/STANDARD_IA/ONEZONE_IA → Cool, GLACIER/DEEP_ARCHIVE → Archive
+- Added lifecycle compliance tags
+- Updated examples/default/ for lifecycle testing
+
+Testing:
+- terraform validate ✅
+- terraform plan ✅
+
+Ready for code review.
