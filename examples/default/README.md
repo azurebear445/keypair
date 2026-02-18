@@ -1,22 +1,22 @@
 # Default Example
 
-This example demonstrates basic usage of the SSH Public Key module.
+This example demonstrates basic usage of the SSH Public Key module with default RSA 4096-bit key generation.
 
-## Usage
+```terraform
+module "ssh_public_key" {
+  source = "../../."
 
-1. Configure your Azure credentials in `vcs_vars.auto.tfvars` or via environment variables
-2. Run `terraform init`
-3. Run `terraform plan`
-4. Run `terraform apply`
+  environment         = "box"
+  location            = "eastus"
+  namespace           = "test-ssh-key"
+  resource_group_name = "rg-test-ssh-key-box-eastus"
 
-## Outputs
-
-- `ssh_public_key_id` - The ID of the created SSH Public Key resource
-- `ssh_private_key_pem` - The private key in PEM format (sensitive)
-
-To retrieve the private key:
-
-```bash
-terraform output -raw ssh_private_key_pem > my_key.pem
-chmod 600 my_key.pem
+  tags = {
+    appid              = "app-6138"
+    architecture       = "native"
+    owner              = "cloudoperations@websterbank.com"
+    purpose            = "Used to test the Terraform SSH Public Key Module."
+    terraform_resource = "true"
+  }
+}
 ```
