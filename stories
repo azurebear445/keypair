@@ -84,3 +84,21 @@ Testing:
 - terraform validate ✅
 - terraform plan ✅
 - Basic example deploys successfully in sandbox
+
+
+
+Raised MR for base Azure SSH Public Key module.
+Changes:
+
+Created module with TLS private key generation (RSA 4096)
+Created azurerm_ssh_public_key resource
+Follows approved NSG module patterns (tags, variables, naming, structure)
+Sensitive output for private_key_pem
+Example in examples/default/
+
+Validation:
+
+terraform fmt ✅
+terraform init ✅
+terraform validate ✅
+terraform apply ✅
