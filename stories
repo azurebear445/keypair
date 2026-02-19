@@ -102,3 +102,44 @@ terraform fmt ✅
 terraform init ✅
 terraform validate ✅
 terraform apply ✅
+
+
+
+
+Add existing key import, algorithm options, and lifecycle configuration to SSH Public Key module
+Story Points: 2
+
+Description
+Enhance the Azure SSH Public Key module with additional flexibility:
+
+Allow users to provide an existing public key instead of generating a new one
+Support ECDSA algorithm as an alternative to RSA
+Add lifecycle configuration options for enterprise key management
+
+
+Acceptance Criteria
+
+Optional public_key variable added — if provided, uses existing key instead of generating new one
+Algorithm variable added with RSA (default) and ECDSA options
+ECDSA curve options available (P256, P384, P521)
+Lifecycle configuration variable added (create_before_destroy, prevent_destroy)
+New example folder examples/existing_key demonstrating bring-your-own-key usage
+README updated with new features
+terraform fmt passes
+terraform validate passes
+terraform plan passes
+terraform apply successful in sandbox
+
+
+Definition of Done
+
+Variables added with proper validations
+Conditional logic implemented for key generation vs import
+examples/default updated to test default behavior
+examples/existing_key created to test bring-your-own-key feature
+README updated
+Code reviewed and approved
+Merged to main branch
+
+
+
