@@ -1,13 +1,3 @@
-resource "random_id" "this" {
-  byte_length = 3
-  keepers = {
-    environment         = var.environment
-    location            = var.location
-    namespace           = var.namespace
-    resource_group_name = var.resource_group_name
-  }
-}
-
 resource "tls_private_key" "this" {
   algorithm = "RSA"
   rsa_bits  = var.rsa_bits

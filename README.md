@@ -18,9 +18,9 @@ This module creates and manages Azure SSH Public Keys with:
 
 ```hcl
 output "ssh_private_key_pem" {
-  value       = module.ssh_key.private_key_pem
-  sensitive   = true
   description = "(string) - Private key for the SSH key."
+  sensitive   = true
+  value       = module.ssh_key.private_key_pem
 }
 ```
 

@@ -30,7 +30,7 @@ locals {
   ssh_public_key_tags = merge(
     local.tags,
     {
-      Name = var.ssh_key_custom_name != "" ? var.ssh_key_custom_name : "${local.namespace}-ssh-key-${random_id.this.hex}"
+      Name = var.ssh_key_custom_name != "" ? var.ssh_key_custom_name : "${local.namespace}-ssh-key"
     }
   )
 }

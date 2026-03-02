@@ -1,6 +1,6 @@
 variable "environment" {
-  type        = string
   description = "The environment where the resources created by this Terraform configuration will be deployed. Must be one of: box|dev|dr|prod|qa|stage|uat."
+  type        = string
 
   validation {
     condition = (
@@ -17,8 +17,8 @@ variable "environment" {
 }
 
 variable "location" {
-  type        = string
   description = "Region to create resources in. Must be one of: eastus, northcentralus."
+  type        = string
 
   validation {
     condition = (
@@ -30,8 +30,8 @@ variable "location" {
 }
 
 variable "namespace" {
-  type        = string
   description = "Namespace for resources created by this Terraform configuration."
+  type        = string
 
   validation {
     condition     = length(var.namespace) < 32 && can(regex("^[a-z-]+$", var.namespace))
@@ -40,14 +40,14 @@ variable "namespace" {
 }
 
 variable "resource_group_name" {
-  type        = string
   description = "Name of the resource group where SSH Public Key will be created."
+  type        = string
 }
 
 variable "rsa_bits" {
-  type        = number
-  description = "The number of bits for the RSA key. Must be one of: 2048, 4096."
   default     = 4096
+  description = "The number of bits for the RSA key. Must be one of: 2048, 4096."
+  type        = number
 
   validation {
     condition     = var.rsa_bits == 2048 || var.rsa_bits == 4096
@@ -56,12 +56,13 @@ variable "rsa_bits" {
 }
 
 variable "ssh_key_custom_name" {
-  type        = string
-  description = "Set a custom name for the SSH public key if it is being imported so the suffix is not randomly generated."
   default     = ""
+  description = "Set a custom name for the SSH public key if it is being imported so the suffix is not randomly generated."
+  type        = string
 }
 
 variable "tags" {
+  description = "Map of tags to apply to module resources. Must include architecture, owner, purpose, terraform_resource, and one of appid|appgid|project."
   type = object({
     appgid                    = optional(string)
     appid                     = optional(string)
@@ -73,7 +74,6 @@ variable "tags" {
     tag_formatting_exceptions = optional(list(string), [])
     terraform_resource        = string
   })
-  description = "Map of tags to apply to module resources. Must include architecture, owner, purpose, terraform_resource, and one of appid|appgid|project."
 
   validation {
     condition = (
@@ -110,7 +110,7 @@ variable "tags" {
       ) ||
       contains(var.tags["tag_formatting_exceptions"], "purpose")
     )
-    error_message = "The purpose tag must begin with a capital letter, be over 40 characters, and end with a period \".\"."
+    error_message = "The purpose tag must begin with a capital letter, be over 40 characters, and end with a period \".\". It can only contain upper and lowercase letters, periods \".\", dashes \"-\", and spaces."
   }
 
   validation {
