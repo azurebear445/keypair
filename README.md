@@ -18,22 +18,22 @@ This module creates and manages Azure SSH Public Keys with:
 
 ```hcl
 output "ssh_private_key_pem" {
+  value       = module.ssh_key.private_key_pem
   description = "(string) - Private key for the SSH key."
   sensitive   = true
-  value       = module.ssh_key.private_key_pem
 }
 ```
 
 - To view the output containing the **private key** via the **CLI**, point your Terraform backend to the workspace that has the output stored and run:
 
 ```bash
-terraform output -raw ssh_private_key_pem
+terraform output -raw <output_name>
 ```
 
 - To save the output into a pem file:
 
 ```bash
-terraform output -raw ssh_private_key_pem > file_name.pem
+terraform output -raw <output_name> > file_name.pem
 ```
 
 ## Release Notes
