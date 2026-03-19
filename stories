@@ -143,3 +143,42 @@ Merged to main branch
 
 
 
+
+Extend SSH Public Key module with existing key support, review, and publish
+Story Points: 2
+
+Description
+Extend the Azure SSH Public Key module to support using existing SSH keys instead of generating new ones. This provides flexibility for teams who want to bring their own keys. Complete code review, final testing, publish module to TFE private registry, and inform other teams of availability.
+
+Acceptance Criteria
+
+Optional public_key variable added to accept existing SSH public key string
+Module skips TLS key generation when public_key is provided
+Module generates new key when public_key is not provided (current behavior preserved)
+New example folder examples/existing_key/ demonstrating the feature
+README updated with existing key usage example
+terraform fmt passes
+terraform validate passes
+terraform plan passes
+terraform apply successful in sandbox
+Code review completed and approved
+Module published to TFE private registry
+Version tagged as 0.0.1
+Teams notified via email and Teams channel
+
+
+Definition of Done
+
+public_key variable added with proper validation
+Conditional logic implemented for key generation vs import
+examples/default/ continues to work (generates new key)
+examples/existing_key/ created and tested
+README updated
+Code reviewed and approved
+Module published to TFE registry
+Merged to main branch
+Announcement sent to teams via email and Teams
+
+
+
+
