@@ -39,6 +39,12 @@ variable "namespace" {
   }
 }
 
+variable "public_key" {
+  default     = null
+  description = "Existing SSH public key to use instead of generating a new one. If provided, TLS key generation is skipped."
+  type        = string
+}
+
 variable "resource_group_name" {
   description = "Name of the resource group where SSH Public Key will be created."
   type        = string

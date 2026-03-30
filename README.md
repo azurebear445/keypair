@@ -10,6 +10,7 @@ This module creates and manages Azure SSH Public Keys with:
 - **TLS private key generation**: Creates RSA key pair (default 4096 bits)
 - **Azure SSH Public Key resource**: Stores the public key in Azure for VM reference
 - **Sensitive output handling**: Private key output is marked sensitive
+- **Existing key support**: Optionally pass your own public key instead of generating a new one
 
 **Important:** This module requires defining an output in the root module so you can access the module attribute `private_key_pem`.
 

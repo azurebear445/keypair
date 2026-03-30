@@ -4,12 +4,12 @@ output "id" {
 }
 
 output "private_key_pem" {
-  value       = tls_private_key.this.private_key_pem
-  description = "(string) - The private key in PEM format. Must be marked sensitive in root module."
+  value       = var.public_key != null ? null : tls_private_key.this[0].private_key_pem
+  description = "(string) - The private key in PEM format. Null if existing public key was provided."
   sensitive   = true
 }
 
 output "public_key_openssh" {
-  value       = tls_private_key.this.public_key_openssh
+  value       = azurerm_ssh_public_key.this.public_key
   description = "(string) - The public key in OpenSSH authorized_keys format."
 }
