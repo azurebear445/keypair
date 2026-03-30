@@ -1,3 +1,8 @@
+# Existing Key Example
+
+This example demonstrates using the SSH Public Key module with an existing SSH public key instead of generating a new one.
+
+```terraform
 # Simulates an existing SSH key (in real usage, user would have their own key)
 resource "tls_private_key" "existing" {
   algorithm = "RSA"
@@ -37,3 +42,4 @@ module "ssh_public_key" {
     terraform_resource = "true"
   }
 }
+```
