@@ -179,6 +179,22 @@ Module published to TFE registry
 Merged to main branch
 Announcement sent to teams via email and Teams
 
-
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBgk4b67W8+CfCLAq8FMYpgOGLiqXDGGufmGEGNmp3yltnhX6hjjVTg26/cPGg6ChF9rT3vH0lTCNmsqsaCzPy0EA67pg8iK/lLkERUce3uf+b1lTOLXR5SOEVeXReZ2I+sgKRFuHjG7sYiT+d20b6NUWHuLRv4dMOJGlMT2UoJnfi0lFGQo7VPByCQBs3cli4q5RcoMBmCFUTOohS2F148FPpXPELmAZ67yiqB+zwUldVwEUmNIoFalgqNzQvVGcOiy5rbBJGWzLFSQLWjrYn//ya+n5CdBP3O4pnzYb+kSSIk2bN2Txmf48VBG5syl0Mdt7TdiUPGzBk6rHAQv9ycQWicNi8CsWavsFWJ7I1HIBMVS1y6pBarTaQj2N42ijxW+S9yS0OqOTG+VpSYBQTZhcdF6PH/UsS6uDyPYpuz2V7H8oDV9zZYdGRhLQTfd60e6nwpT9r6mfQ5IbJ8Nx0IZljlJR2JeaB7t8yTgx/UafkjagI+B6xFghmnkPxtHlZ5+ii3jrF0fJF4zz+Bg+Q1bazO5oBbgLyNdk2l4y7nwQ99V/IZlP+t+dbDDww3/uJQGy4/VmiPZmwTNfcKoa9x1e5Lu0CjBs99vXlqRiVqGOemW+v4MtWVGfl6PitxWRhP7vdZtLFlsifIoaHy6uDanqx18AK911di1DeNHp8uw== test@example.com
 
+**Branch name:**
+```
+CLOUD-2706-SshPublicKeyExistingKeySupport
+```
+
+**MR Title:**
+```
+CLOUD-2706 - SSH PUBLIC KEY EXISTING KEY SUPPORT
+```
+
+**Description:**
+
+Jira Story or SNOW Ticket
+- CLOUD-2706
+
+Description of change:
+- Adds support for using existing SSH public keys instead of generating new ones. If teams already have SSH keys (e.g., stored in Key Vault or managed externally), they can now pass the public key to the module and store it in Azure. When `public_key` variable is provided, the module skips TLS key generation. New example folder `examples/existing_key/` demonstrates the feature.
